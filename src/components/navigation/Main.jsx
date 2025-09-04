@@ -2,6 +2,7 @@ import React from "react";
 import HomeImageSection from "../HomeImageSection";
 import Navbar from "./Navbar";
 import HomeIconPage from "../IconPage";
+import EventHomeView from "../EventHomeView";
 
 
 const Body = () => {
@@ -27,6 +28,7 @@ const Body = () => {
       <Navbar/>
       <HomeImageSection/>
       <HomeIconPage/>
+      <EventHomeView/>
     </div>
   );
 };

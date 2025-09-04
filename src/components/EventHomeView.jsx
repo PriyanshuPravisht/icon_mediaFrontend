@@ -1,8 +1,12 @@
-import Card from "./EventsList";
+import { Link } from "react-router-dom";
+import EventList from "./EventsList";
+import EventCardData from "./EventsCardData"; // we will reuse data from here
+import "../Style/Events.scss";
 
-const PropertyListing = () => {
+const EventHomeView = () => {
+  // Copy the same properties array from EventCardData
   const properties = [
-    {
+   {
       image: ["event1.jpg", "event2.jpg", "event3.jpg"],
       location: "CA After Party",
       EventType:"NIGHTLIFE" ,
@@ -62,23 +66,28 @@ const PropertyListing = () => {
       Status: "Upcoming",
       MoneyBill: "Free",
     },
-    // {
-    //     image :"property7.jpg",
-    //     location:"Los Angeles, USA",
-    //     area: 2000 ,
-    //     bedrooms: 3,
-    //     bathrooms: 2,
-    //     parking :1
-    // },
   ];
 
+
   return (
-    <div className="propertylist-content">
-      {properties.map((property, index) => (
-        <Card key={index} {...property} />
+   
+    <div className="home-events-preview" >
+      <h1> <p style={{color:"#000",marginRight:"10px", fontWeight:"400"}}>Featured</p>Events</h1>
+      {/* Show only first 3 events */}
+      <div className="home-events-preview-cards">
+      {properties.slice(0, 3).map((property, index) => (
+        <EventList key={index} {...property} />
       ))}
+      </div>
+
+      {/* See More button */}
+      <div className="see-more-btn " style={{ textAlign: "center" }}>
+        <Link to="/events">
+          <button className="see_more-btn">See More Events</button>
+        </Link>
+      </div>
     </div>
   );
 };
 
-export default PropertyListing;
+export default EventHomeView;
