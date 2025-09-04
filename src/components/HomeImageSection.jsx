@@ -6,7 +6,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import '../Style/home.scss'; // This is where your custom CSS will go
+
 
 const HomeImageSection = () => {
     const images = [

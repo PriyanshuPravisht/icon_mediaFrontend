@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import EventList from "./EventsList";
 import EventCardData from "./EventsCardData"; // we will reuse data from here
-import "../Style/Events.scss";
+
 
 const EventHomeView = () => {
   // Copy the same properties array from EventCardData

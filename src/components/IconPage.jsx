@@ -1,5 +1,5 @@
 import React from "react";
-import '../Style/home.scss'; // make sure your CSS file is in the right path
+
 
 const HomeIconPage = () => {
   return (
