@@ -1,8 +1,10 @@
-.body {
+.Main-section {
   font-family: Arial, sans-serif;
   background: #f9f9f9;
   padding: 40px;
+  margin-top:10%;
   min-height: 200vh; // ensures page scrolls
+  border:solid;
 
   &__hero {
     text-align: center;
