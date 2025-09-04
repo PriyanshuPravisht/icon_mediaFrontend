@@ -99,6 +99,37 @@
   }
 }
 
+// Home Event Preview 
+.home-events-preview{
+  padding:2% 0% 0% 0%;
+}
+
+.home-events-preview-cards{
+  display: flex;
+  justify-content: space-between;
+}
+.see_more-btn{
+  border:Solid;
+  padding:1%;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #ffbb00;
+  color:#fff;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+:hover.see_more-btn{
+  background-color: #cb9501;
+  cursor: pointer;
+}
+
+.home-events-preview h1{
+  display: flex;
+  justify-content: center;
+  color:#ffbb00;
+  font-size: 4rem;
+}
 
 /* ✅ Responsive */
 @media (max-width: 768px) {
@@ -110,6 +141,10 @@
       gap: 10px;
       justify-content: flex-start;
     }
+  }
+
+  .home-events-preview-cards{
+    flex-direction: column;
   }
 }
 

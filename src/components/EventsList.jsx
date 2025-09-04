@@ -2,7 +2,7 @@ import { FaBed, FaCalendarAlt, FaHourglassHalf, FaMapMarkerAlt ,FaMoneyBill} fro
 import Slider from "react-slick"; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import '../Style/Events.scss';
+// import '../Style/Events.scss';
 
 const Card = ({ image, location,date,EventType, description, Location, Status, MoneyBill }) => {
    // Slider settings
