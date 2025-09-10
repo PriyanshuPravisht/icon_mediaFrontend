@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const AddEvent = () => {
   const [formData, setFormData] = useState({
     id: "",
