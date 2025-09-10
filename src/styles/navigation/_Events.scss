@@ -78,8 +78,9 @@
 .propertylist-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  // gap: 40px;
   padding:2%;
+  justify-content: space-between;
 
   .property-card {
     flex: 1 1 calc(35% - 20px); 
@@ -101,7 +102,7 @@
 
 // Home Event Preview 
 .home-events-preview{
-  padding:2% 0% 0% 0%;
+  padding:2% ;
 }
 
 .home-events-preview-cards{
@@ -149,3 +150,164 @@
 }
 
 
+// Event detail page
+.event-details {
+  font-family: "Montserrat", sans-serif; 
+  color:#000;
+
+  .backtolisting-btn{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: auto 2%;
+            padding: 8px 16px;
+            background: transparent;
+            border:none;
+            border-radius: 5px;
+            color: #ffbb00;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+  }
+
+.backtolisting-btn:hover{
+   background: #6a6a6a;
+   border:none;
+   color: #fff;
+}
+
+&-heading{
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 3rem;
+}
+&-row1{
+  display:flex;
+  justify-content:space-between;
+  text-align:center;
+  align-items:center;
+  flex-wrap: wrap;
+}
+&-row2{
+  margin:5% auto;
+  display:flex;
+  justify-content:space-between;
+  text-align:left;
+  // align-items:center;
+  flex-direction: column;
+  width:"30%";
+  gap:30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding:2%;
+}
+&-content{
+  padding:5%;
+}
+
+&-startdate,&-enddate,&-doortime,&-status,&-location,&-price,&-category{
+   font-size: 1.1rem;
+   color:#000;
+}
+&-description{
+   white-space: pre-line;
+  line-height: 1.8;
+  margin:2% auto;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding:2%;
+}
+&-card{
+   background-color:#ffffffff;
+   padding:2%;
+   margin:2% auto auto auto;
+   border-radius:10px;
+}
+&-card1{
+   background-color:#ffffffff;
+   padding:2%;
+   border-radius:10px;
+   width:100%;
+}
+
+  /* ---------- Responsive Breakpoints ---------- */
+
+  /* Tablets */
+  @media (max-width: 1024px) {
+    .images-carousel{
+    flex-direction: column;
+  }
+ .images-carousel-slider{
+      width:100%;
+      margin-bottom: 10%;
+  }
+    &-heading {
+      font-size: 2.2rem;
+    }
+
+    &-price {
+      font-size: 1.6rem;
+    }
+
+    &-startdate,&-enddate,&-doortime,&-status,&-location,&-price,&-category{
+      font-size: 1.2rem;
+    }
+
+    &-description {
+      font-size: 1rem;
+    }
+  }
+
+  /* Mobiles */
+  @media (max-width: 767px) {
+    .images-carousel{
+    flex-direction: column;
+  }
+ .images-carousel-slider{
+      width:100%;
+      margin-bottom: 10%;
+  }
+    &-heading {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    &-row1,
+    &-row2 {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 0.8rem;
+    }
+
+    &-price {
+      font-size: 1.4rem;
+    }
+
+   &-startdate,&-enddate,&-doortime,&-status,&-location,&-price,&-category {
+      font-size: 1rem;
+    }
+
+    &-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+  }
+}
+
+.images-carousel{
+    display: flex;
+    padding:2%;
+  }
+
+  .images-carousel-slider{
+      width:70%;
+      margin-right:2%;
+  }
+  
+  // Related events
+  .related-events{
+    padding:2%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin:2%;
+  }

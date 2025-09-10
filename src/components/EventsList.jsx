@@ -1,10 +1,11 @@
+import {Link} from "react-router-dom";
 import { FaBed, FaCalendarAlt, FaHourglassHalf, FaMapMarkerAlt ,FaMoneyBill} from "react-icons/fa";
 import Slider from "react-slick"; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import '../Style/Events.scss';
 
-const Card = ({ image, location,date,EventType, description, Location, Status, MoneyBill }) => {
+const Card = ({id, image, location,startdate,title,doortime,EventType, description, Location, Status, MoneyBill }) => {
    // Slider settings
   const settings = {
     dots: true,
@@ -16,6 +17,8 @@ const Card = ({ image, location,date,EventType, description, Location, Status, M
   };
   
   return (
+    <Link to={`/events/${id}`} style={{ textDecoration: "none", color: "inherit" }}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
     <div className="property-card">
       {/* Image */}
       {/* <img src={image} alt={location} className="property-card__image" /> */}
@@ -50,14 +53,13 @@ const Card = ({ image, location,date,EventType, description, Location, Status, M
           <div className="flex items-center property-card__detailrow">
             {/* <FaBed className="mr-1 text-blue-500" />  */}
              <FaCalendarAlt className="mr-2 text-red-500"></FaCalendarAlt>
-            {date}
+            {startdate}
           </div>
-           
           
         </div>
 
         {/* Area */}
-        <p className="property-card__description">{description}sqft</p>
+        {/* <p className="property-card__description">{title}</p> */}
 
         {/* Icons Row */}
         <div className="property-card__details">
@@ -79,6 +81,7 @@ const Card = ({ image, location,date,EventType, description, Location, Status, M
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

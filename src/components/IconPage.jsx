@@ -5,9 +5,9 @@ const HomeIconPage = () => {
   return (
     <div className="container">
       {/* Top Image Section */}
-      <div className="top-section">
+      {/* <div className="top-section">
         <img src="../public\ICON Logo AUS - Black.png" alt="Logo" className="logo" />
-        {/* <h2>ICON <br />MEDIA</h2> */}
+        
         <img src="../public\pexels-a-darmel-8134174.jpg" alt="People" className="people-img" />
 
         <div className="qr-box">
@@ -18,7 +18,7 @@ const HomeIconPage = () => {
             FOR MORE INFO
           </p>
         </div>
-      </div>
+      </div> */}
 
       {/* Heading */}
       <div className="heading">
