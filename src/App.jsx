@@ -5,6 +5,7 @@ import Footer from "./components/navigation/Footer";
 import Body from "./components/navigation/Main";
 import PropertyListing from "./components/EventsCardData";
 import EventDetails from "./components/EventDetails";
+import AddEvent from "./components/Admin/AddEvent";
 
 function App() {
     return (
@@ -23,7 +24,9 @@ function App() {
                   {/* Event details page */}
                 <Route path="/events/:id" element={<EventDetails />} />
 
-                {/* future: About, Contact, etc */}
+                {/* Add Event page */}
+                <Route path="/Admin/AddEvent" element={<AddEvent />} />
+            
             </Routes>
 
             <Footer />
