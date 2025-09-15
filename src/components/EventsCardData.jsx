@@ -1,4 +1,5 @@
 import Card from "./EventsList";
+import { useState,useEffect } from "react";
 
 
   export const properties = [
@@ -118,14 +119,84 @@ Whether you’re a die-hard soccer fan or simply enjoy a good sporting event, th
     //     bathrooms: 2,
     //     parking :1
     // },
+    
   ];
 
 const PropertyListing = () => {
+
+    // state for text color
+  const [eventHome_textColor, setTextColor] = useState(() => {
+    return localStorage.getItem("eventHome_textColor") || "#000000";
+  });
+
+  // state for gradient
+  const [eventHome_cardGradient, setCardGradient] = useState(() => {
+    return JSON.parse(localStorage.getItem("eventHome_cardGradient")) || {
+      start: "#e0e0e0",
+      end: "#b0b0b0",
+    };
+  });
+
+  // Load saved values from localStorage on mount
+  useEffect(() => {
+    const savedTextColor = localStorage.getItem("eventHome_textColor");
+    const savedCardGradient = localStorage.getItem("eventHome_cardGradient");
+
+    if (savedTextColor) setTextColor(savedTextColor);
+    if (savedCardGradient) setCardGradient(JSON.parse(savedCardGradient));
+  }, []);
+
+  // Save values to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("eventHome_textColor", eventHome_textColor);
+    localStorage.setItem("eventHome_cardGradient", JSON.stringify(eventHome_cardGradient));
+  }, [eventHome_textColor, eventHome_cardGradient]);
+
+
   return (
+    <div>
+      <div style={{ margin: "5% 0 0 0" }}>
+        <label>
+          <b>Card Gradient Start:</b>{" "}
+          <input
+            type="color"
+            value={eventHome_cardGradient.start}
+            onChange={(e) =>
+              setCardGradient({ ...eventHome_cardGradient, start: e.target.value })
+            }
+          />
+        </label>
+        &nbsp;&nbsp;
+        <label>
+          <b>Card Gradient End:</b>{" "}
+          <input
+            type="color"
+            value={eventHome_cardGradient.end}
+            onChange={(e) =>
+              setCardGradient({ ...eventHome_cardGradient, end: e.target.value })
+            }
+          />
+        </label>
+        &nbsp;&nbsp;
+        <label>
+          <b>Text Color:</b>{" "}
+          <input
+            type="color"
+            value={eventHome_textColor}
+            onChange={(e) => setTextColor(e.target.value)}
+          />
+        </label>
+      </div>
+
+{/* Cards */}
     <div className="propertylist-content">
       {properties.map((property) => (
-        <Card key={property.id} {...property} />
+        <Card key={property.id} {...property} 
+        cardGradient={eventHome_cardGradient}
+            textColor={eventHome_textColor}/>
       ))}
+
+    </div>
     </div>
   );
 };

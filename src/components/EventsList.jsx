@@ -3,9 +3,11 @@ import { FaBed, FaCalendarAlt, FaHourglassHalf, FaMapMarkerAlt ,FaMoneyBill} fro
 import Slider from "react-slick"; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { useState,useEffect } from "react";
 // import '../Style/Events.scss';
 
-const Card = ({id, image, location,startdate,title,doortime,EventType, description, Location, Status, MoneyBill }) => {
+const Card = ({id, image, location,startdate,title,doortime,EventType, description, Location, Status, MoneyBill,cardGradient ,textColor}) => {
    // Slider settings
   const settings = {
     dots: true,
@@ -19,10 +21,20 @@ const Card = ({id, image, location,startdate,title,doortime,EventType, descripti
   return (
     <Link to={`/events/${id}`} style={{ textDecoration: "none", color: "inherit" }}
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-    <div className="property-card">
+    <div className="property-card"   
+    // style={{
+    //       background: `linear-gradient(135deg, ${cardGradient.start}, ${cardGradient.end})`,
+    //       color: textColor,  
+    //       borderRadius: "15px",
+    //       padding: "10px"
+    //     }}
+        >
       {/* Image */}
       {/* <img src={image} alt={location} className="property-card__image" /> */}
       {/* Image Carousel */}
+
+
+    
       <Slider {...settings} >
         {image.map((img, index) => (
           <div key={index} >
@@ -82,6 +94,8 @@ const Card = ({id, image, location,startdate,title,doortime,EventType, descripti
       </div>
     </div>
     </Link>
+
+    
   );
 };
 
