@@ -1,22 +1,24 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const AddEvent = () => {
   const [formData, setFormData] = useState({
     id: "",
-    image: [],
-    location: "",
-    startdate: "",
-    enddate: "",
-    doortime: "",
-    Status: "",
-    Location: "",
-    MoneyBill: "",
+    title: "",
     category: "",
     description: "",
+    locationName: "",
+    cityLocation: "",
+    status: "",
+    startDate: "",
+    endDate: "",
+    doorTime: "",
+    price: "",
+    userId: "",
+    images: [], // files
   });
 
   const [previewImages, setPreviewImages] = useState([]);
-
 
   // handle input change
   const handleChange = (e) => {
@@ -24,55 +26,68 @@ const AddEvent = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // handle file change (max 3 images)
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files).slice(0, 3);
+    setFormData({ ...formData, images: files });
 
-  // handle file change
-const handleFileChange = (e) => {
-  const files = Array.from(e.target.files).slice(0, 3); // max 3 files
-  const newImages = [...formData.image, ...files].slice(0, 3); // existing + new files, max 3
-  setFormData({ ...formData, image: newImages });
-
-    // generate preview URLs
-    const previews = newImages.map((file) => URL.createObjectURL(file));
-  setPreviewImages(previews);
-};
+    const previews = files.map((file) => URL.createObjectURL(file));
+    setPreviewImages(previews);
+  };
 
   // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-     const data = new FormData();
-    data.append("id", formData.id);
-    data.append("location", formData.location);
-    data.append("startdate", formData.startdate);
-    data.append("enddate", formData.enddate);
-    data.append("doortime", formData.doortime);
-    data.append("Status", formData.Status);
-    data.append("Location", formData.Location);
-    data.append("MoneyBill", formData.MoneyBill);
-    data.append("category", formData.category);
-    data.append("description", formData.description);
-
-    formData.images.forEach((file) => {
-      data.append("images", file); // send multiple files
-    });
-
     try {
-      const res = await axios.post("http://localhost:5000/events", finalData); // 👈 API endpoint
+      // ✅ Convert image files into base64 / upload handling 
+      // For now, I'll just send dummy `imageUrls` with placeholder strings
+      const imageUrls = formData.images.map((file) => file.name); 
+
+      const payload = {
+        id: formData.id,
+        title: formData.title,
+        category: formData.category,
+        description: formData.description,
+        locationName: formData.locationName,
+        cityLocation: formData.cityLocation,
+        status: formData.status,
+        startDate: formData.startDate,
+        endDate: formData.endDate,
+        doorTime: formData.doorTime,
+        price: formData.price,
+        userId: formData.userId,
+        imageUrls: imageUrls, // API expects array of strings
+      };
+
+      const res = await axios.post(
+        "http://35.179.173.165:9302/api/events",
+        payload,
+  {
+    headers: {
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2OGM5YjIzZDlmNDAyY2U5YTg1NmQyYWIiLCJlbWFpbCI6InByaXlhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTc1ODA4NTA2NSwiZXhwIjoxNzU4MDg4NjY1fQ.znzVRIiT-NS4AWD7Z6Z-hlHSzGYC1BiHwcN-JBAVnHU`,
+    },
+  }
+        
+      );
+
       alert("Event Added Successfully!");
       console.log(res.data);
+
       setFormData({
         id: "",
-        image: [],
-        location: "",
-        startdate: "",
-        enddate: "",
-        doortime: "",
-        Status: "",
-        Location: "",
-        MoneyBill: "",
+        title: "",
         category: "",
         description: "",
+        locationName: "",
+        cityLocation: "",
+        status: "",
+        startDate: "",
+        endDate: "",
+        doorTime: "",
+        price: "",
+        userId: "",
+        images: [],
       });
       setPreviewImages([]);
     } catch (err) {
@@ -82,158 +97,91 @@ const handleFileChange = (e) => {
   };
 
   return (
-    <div className="addevent-container" >
+    <div className="addevent-container">
       <h1>Add New Event</h1>
       <form className="addevent-form" onSubmit={handleSubmit}>
+        
         <div className="form-group">
           <label>ID</label>
-          <input
-            type="text"
-            name="id"
-            value={formData.id}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="id" value={formData.id} onChange={handleChange}  />
+        </div>
+
+        <div className="form-group">
+          <label>Title</label>
+          <input type="text" name="title" value={formData.title} onChange={handleChange} required />
         </div>
 
         <div className="form-group">
           <label>Upload Images (max 3)</label>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={handleFileChange}
-          />
+          <input type="file" multiple accept="image/*" onChange={handleFileChange} />
           <div className="preview-images" style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
             {previewImages.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`preview-${idx}`}
-                style={{ width: "80px", height: "80px", objectFit: "cover", borderRadius: "5px" }}
-              />
+              <img key={idx} src={img} alt={`preview-${idx}`} style={{ width: "80px", height: "80px", objectFit: "cover", borderRadius: "5px" }} />
             ))}
           </div>
         </div>
-        
 
         <div className="form-group">
           <label>Location Name</label>
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="locationName" value={formData.locationName} onChange={handleChange} required />
+        </div>
+
+        <div className="form-group">
+          <label>City Location</label>
+          <input type="text" name="cityLocation" value={formData.cityLocation} onChange={handleChange} required />
+        </div>
+
+        <div className="form-group">
+          <label>Status</label>
+          <select name="status" value={formData.status} onChange={handleChange} required>
+            <option value="">-- Select --</option>
+            <option value="Upcoming">Upcoming</option>
+            <option value="Ongoing">Ongoing</option>
+            <option value="Completed">Completed</option>
+          </select>
         </div>
 
         <div className="form-row">
           <div className="form-group">
             <label>Start Date</label>
-            <input
-              type="date"
-              name="startdate"
-              value={formData.startdate}
-              onChange={handleChange}
-              required
-            />
+            <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label>End Date</label>
-            <input
-              type="date"
-              name="enddate"
-              value={formData.enddate}
-              onChange={handleChange}
-              required
-            />
+            <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label>Door Time</label>
-            <input
-              type="time"
-              name="doortime"
-              value={formData.doortime}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        </div>
-
-        <div className="form-row">
-          <div className="form-group">
-            <label>Status</label>
-            <select
-              name="Status"
-              value={formData.Status}
-              onChange={handleChange}
-              required
-            >
-              <option value="">-- Select --</option>
-              <option value="Upcoming">Upcoming</option>
-              <option value="Ongoing">Ongoing</option>
-              <option value="Completed">Completed</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label>City/Location</label>
-            <input
-              type="text"
-              name="Location"
-              value={formData.Location}
-              onChange={handleChange}
-              placeholder="Enterr Event Location"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Price</label>
-            <input
-              type="text"
-              name="MoneyBill"
-              value={formData.MoneyBill}
-              onChange={handleChange}
-              placeholder="Enter Price Of Event"
-              required
-            />
+            <input type="time" name="doorTime" value={formData.doorTime} onChange={handleChange} required />
           </div>
         </div>
 
         <div className="form-group">
+          <label>Price</label>
+          <input type="text" name="price" value={formData.price} onChange={handleChange} required />
+        </div>
+
+        <div className="form-group">
           <label>Category</label>
-          <select
-            type="text"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            placeholder="Nightlife / Wedding / Business"
-            required
-          >
-             <option value="">-- Select --</option>
-              <option value="Upcoming">Nightlife</option>
-              <option value="Ongoing">Wedding</option>
-              <option value="Completed">Business</option>
+          <select name="category" value={formData.category} onChange={handleChange} required>
+            <option value="">-- Select --</option>
+            <option value="Nightlife">Nightlife</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Business">Business</option>
           </select>
         </div>
 
         <div className="form-group">
           <label>Description</label>
-          <textarea
-            name="description"
-            placeholder="Enter Description"
-            rows="4"
-            value={formData.description}
-            onChange={handleChange}
-            required
-          />
+          <textarea name="description" rows="4" value={formData.description} onChange={handleChange} required />
         </div>
 
-        <button type="submit" className="submit-btn">
-          Save Event
-        </button>
+        <div className="form-group">
+          <label>User ID</label>
+          <input type="text" name="userId" value={formData.userId} onChange={handleChange}  />
+        </div>
+
+        <button type="submit" className="submit-btn">Save Event</button>
       </form>
     </div>
   );

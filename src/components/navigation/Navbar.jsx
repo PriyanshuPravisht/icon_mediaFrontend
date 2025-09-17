@@ -34,8 +34,8 @@ const Navbar = () => {
                 <ul className="nav-links">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/events">Events</Link></li> {/* ✅ Route to events */}
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/contact">Contact Us</Link></li>
+                    {/* <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/contact">Contact Us</Link></li> */}
 
                 </ul>
                 <button className="register-btn">Register</button>

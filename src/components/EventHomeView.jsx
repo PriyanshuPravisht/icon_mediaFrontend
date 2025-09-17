@@ -63,7 +63,7 @@ const EventHomeView = () => {
         </label>
         &nbsp;&nbsp;
         <label>
-          <b>Gradient Start:</b>{" "}
+          <b>Backgrund Color:</b>{" "}
           <input
             type="color"
             value={eventHome_gradient.start}
@@ -73,14 +73,14 @@ const EventHomeView = () => {
           />
         </label>
         &nbsp;&nbsp;
-        <label>
+        {/* <label>
           <b>Gradient End:</b>{" "}
           <input
             type="color"
              value={eventHome_gradient.end}
             onChange={(e) => setGradient({ ...eventHome_gradient, end: e.target.value })}
           />
-        </label>
+        </label> */}
       
       </div>
 
