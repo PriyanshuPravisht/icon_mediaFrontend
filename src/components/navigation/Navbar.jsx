@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // ✅ Import Link
+import { Link ,useNavigate} from "react-router-dom"; // ✅ Import Link
 // import "./Navbar.css";
 
 const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleLogout = () => {
+    // Remove saved token
+    localStorage.removeItem("token");
+
+    // Redirect to login page
+    navigate("/admin/login");
+  }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,7 +47,7 @@ const Navbar = () => {
                     <li><Link to="/contact">Contact Us</Link></li> */}
 
                 </ul>
-                <button className="register-btn">Register</button>
+                <button className="register-btn" onClick={handleLogout}>Log Out</button>
             </div>
         </nav>
     );

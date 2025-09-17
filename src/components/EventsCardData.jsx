@@ -193,7 +193,7 @@ const PropertyListing = () => {
       {properties.map((property) => (
         <Card key={property.id} {...property} 
         cardGradient={eventHome_cardGradient}
-            textColor={eventHome_textColor}/>
+        textColor={eventHome_textColor}/>
       ))}
 
     </div>

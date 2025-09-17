@@ -1,0 +1,50 @@
+.form-container{
+    width:30%;
+    margin:10% auto;
+}
+
+.form-container form{
+     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 5%;
+}
+
+.inputfield{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom:20px;
+}
+
+.form-container h2{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.forgot-btn{
+    text-decoration: none;
+}
+
+.lgn_btn{
+    height:35px;
+    width:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px auto;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.lgn_btn:hover{
+    background-color:rgb(244, 208, 102);
+}
+
+.form-container p{
+margin-top: 10%;
+}
