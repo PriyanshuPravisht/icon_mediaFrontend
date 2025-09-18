@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios  from "axios";
 import { Link } from "react-router-dom";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 const SignUp = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -36,10 +38,25 @@ const SignUp = () => {
   };
 
   return (
-    <div className="form-container" style={{marginTop:"20%"}}>
-      <h2 className="">Register</h2>
+    <div className="form-container" >
+        <img src="../ICON Logo AUS - Black.png" className="top-logo" alt="logo"></img>
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          type="text"
+          name="Name"
+          className="inputfield"
+          placeholder="Enter Full Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+           style={{
+            margin:"10px 0px"
+          }}
+                   />
+        {/* <input
           type="text"
           name="name"
           className="inputfield"
@@ -47,8 +64,23 @@ const SignUp = () => {
           value={form.name}
           onChange={handleChange}
           required
-        />
-        <input
+        /> */}
+       <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+          type="email"
+          name="email"
+          className="inputfield"
+          placeholder="Enter User Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+           style={{
+            margin:"10px 0px"
+          }}
+                   />
+        {/* <input
           type="email"
           name="email"
           className="inputfield"
@@ -56,8 +88,23 @@ const SignUp = () => {
           value={form.email}
           onChange={handleChange}
           required
-        />
-        <input
+        /> */}
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          type="password"
+          name="password"
+          className="inputfield"
+          placeholder="Enter User Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+           style={{
+            margin:"10px 0px"
+          }}
+                   />
+        {/* <input
           type="password"
           name="password"
           className="inputfield"
@@ -65,10 +112,10 @@ const SignUp = () => {
           value={form.password}
           onChange={handleChange}
           required
-        />
-        <button type="submit">Register</button>
+        /> */}
+        <button type="submit" className="lgn_btn">Register</button>
         <p>
-          Already have an account ? <Link to="/admin/login">Go to Login</Link>
+          Already have an account ? <Link to="/admin/login" className="link_btn">Go to Login</Link>
         </p>
       </form>
       <p>{message}</p>

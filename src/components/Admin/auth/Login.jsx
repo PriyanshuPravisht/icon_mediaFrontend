@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,7 +24,7 @@ const Login = () => {
       // const id = Date.now().toString();
 
        const body = {
-       
+       className:"form_containerbody",
         name: "login User", // placeholder since login generally doesn't need name
         email: form.email,
         password: form.password,
@@ -61,9 +64,13 @@ const Login = () => {
 
   return (
     <div className="form-container" >
-      <h2>Login</h2>
+      {/* <h2>Login</h2> */}
+      <img src="../ICON Logo AUS - Black.png" className="top-logo" alt="logo"></img>
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
           type="email"
           name="email"
           placeholder="Enter Email"
@@ -71,8 +78,20 @@ const Login = () => {
           value={form.email}
           onChange={handleChange}
           required
-        /><br></br>
-        <input
+           />
+        {/* <input
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          className="inputfield"
+          value={form.email}
+          onChange={handleChange}
+          required
+        /> */}
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
           type="password"
           name="password"
           className="inputfield"
@@ -80,18 +99,30 @@ const Login = () => {
           value={form.password}
           onChange={handleChange}
           required
-        /><br></br>
-        <Link
+          style={{
+            margin:"20px 0px"
+          }}
+           />
+        {/* <input
+          type="password"
+          name="password"
+          className="inputfield"
+          placeholder="Enter Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+        /><br></br> */}
+        {/* <Link
           type="button"
           className="forgot-btn"
           onClick={() => setShowForgot(true)}
         >
           Forgot Password
-        </Link>
+        </Link> */}
         <br></br>
         <button type="submit" className="lgn_btn">Login</button>
         <p>
-          Don't have an account ? <Link to="/admin/signup">Go to SignUp</Link>
+          Don't have an account ? <Link to="/admin/signup" className="link_btn">Go to SignUp</Link>
         </p>
       </form>
       <p>{message}</p>
