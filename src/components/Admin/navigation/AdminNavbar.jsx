@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link ,useNavigate} from "react-router-dom"; // ✅ Import Link
 // import "./Navbar.css";
 
-const Navbar = () => {
+const AdminNavbar = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
 
@@ -41,16 +41,16 @@ const Navbar = () => {
                     />
                 </div>
                 <ul className="nav-links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/events">Events</Link></li> {/* ✅ Route to events */}
+                    <li><Link to="home">Home</Link></li>
+                    <li><Link to="events">Events</Link></li> {/* ✅ Route to events */}
                     {/* <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/contact">Contact Us</Link></li> */}
 
                 </ul>
-                {/* <button className="register-btn" onClick={handleLogout}>Log Out</button> */}
+                <button className="register-btn" onClick={handleLogout}>Log Out</button>
             </div>
         </nav>
     );
 };
 
-export default Navbar;
+export default AdminNavbar;

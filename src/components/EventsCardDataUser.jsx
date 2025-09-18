@@ -122,7 +122,7 @@ Whether you’re a die-hard soccer fan or simply enjoy a good sporting event, th
     
   ];
 
-const PropertyListing = () => {
+const PropertyListings = () => {
 
     // state for text color
   const [eventHome_textColor, setTextColor] = useState(() => {
@@ -154,8 +154,8 @@ const PropertyListing = () => {
 
 
   return (
-    <div style={{paddingTop:"6%"}}>
-      <div style={{ margin: "5% 0 0 0" }}>
+    <div>
+      {/* <div style={{ margin: "5% 0 0 0" }}>
         <label>
           <b>Card Gradient Start:</b>{" "}
           <input
@@ -186,7 +186,7 @@ const PropertyListing = () => {
             onChange={(e) => setTextColor(e.target.value)}
           />
         </label>
-      </div>
+      </div> */}
 
 {/* Cards */}
     <div className="propertylist-content">
@@ -201,4 +201,4 @@ const PropertyListing = () => {
   );
 };
 
-export default PropertyListing;
+export default PropertyListings;

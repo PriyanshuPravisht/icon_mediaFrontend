@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import EventList from "./EventsList";
-import EventCardData from "./EventsCardData"; // we will reuse data from here
+import EventList from "../EventsList";
+import EventCardData from "../EventsCardData"; // we will reuse data from here
 import { properties } from "./EventsCardData";
 import { useState,useEffect } from "react";
 
 
-const EventHomeView = () => {
+const AdminEventHomeView = () => {
    // state for colors
     const [eventHome_textColor, setTextColor] = useState(() => {
     return localStorage.getItem("eventHome_textColor") || "#000000";
@@ -53,7 +53,7 @@ const EventHomeView = () => {
        >
         {/* Color pickers for admin */}
       <div style={{ marginBottom: "15px", textAlign: "center" }}>
-        {/* <label>
+        <label>
           <b>Text Color:</b>{" "}
           <input
             type="color"
@@ -71,7 +71,7 @@ const EventHomeView = () => {
              setGradient({ ...eventHome_gradient, start: e.target.value })
             }
           />
-        </label> */}
+        </label>
         &nbsp;&nbsp;
         {/* <label>
           <b>Gradient End:</b>{" "}
@@ -97,7 +97,7 @@ const EventHomeView = () => {
 
       {/* See More button */}
       <div className="see-more-btn " style={{ textAlign: "center" }}>
-        <Link to="/events">
+        <Link to="/admin/events">
           <button className="see_more-btn"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>See More Events</button>
         </Link>
@@ -106,4 +106,4 @@ const EventHomeView = () => {
   );
 };
 
-export default EventHomeView;
+export default AdminEventHomeView;

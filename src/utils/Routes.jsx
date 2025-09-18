@@ -3,9 +3,11 @@ import { UserLayout } from "../assets/layouts/UserLayout";
 import AdminLayout from "../components/Admin/AdminLayout";
 import Login from "../components/Admin/auth/Login";
 import SignUp from "../components/Admin/auth/SignUp";
-import PropertyListing from "../components/EventsCardData";
+import PropertyListingUser from "../components/EventsCardDataUser";  // user ke liye
+import PropertyListingAdmin from "../components/EventsCardData";     // admin ke liye
 import EventDetails from "../components/EventDetails";
 import Body from "../components/navigation/Main";
+import AdminBody from "../components/Admin/navigation/Main";
 
 export const AppRoutes = [
   {
@@ -18,7 +20,7 @@ export const AppRoutes = [
     } ,
     {
      path:"/events",
-     element:<PropertyListing />,
+     element:<PropertyListingUser />,
     } ,
     {
      path:"/events/:id",
@@ -27,14 +29,25 @@ export const AppRoutes = [
 ],
   },
 
-      {
-        path: "/admin",
-        element: <AdminLayout />,
-        children: [
-          { path: "login", element: <Login /> },
-          { path: "signup", element: <SignUp /> },
-       
-        ],
-      },
-    ]
+     // Admin routes without layout (login, signup)
+  {
+    path: "/admin/login",
+    element: <Login />,
+  },
+  {
+    path: "/admin/signup",
+    element: <SignUp />,
+  },
+
+  // Admin routes with AdminLayout (with navbar/footer)
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      { path: "home", element: <AdminBody /> }, 
+      { path: "events", element: <PropertyListingAdmin /> }, 
+      // future admin-only pages yaha add kar sakte ho
+    ],
+  },
+]
   

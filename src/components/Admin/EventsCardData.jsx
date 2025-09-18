@@ -1,4 +1,4 @@
-import Card from "./EventsList";
+import Card from "../EventsList";
 import { useState,useEffect } from "react";
 
 
@@ -154,7 +154,7 @@ const PropertyListing = () => {
 
 
   return (
-    <div style={{paddingTop:"6%"}}>
+    <div style={{border:"solid red"}}>
       <div style={{ margin: "5% 0 0 0" }}>
         <label>
           <b>Card Gradient Start:</b>{" "}

@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 
 
 
-const HomeIconPage = () => {
+const AdminHomeIconPage = () => {
  // state for colors
   const [textColor, setTextColor] = useState(() => {
   return localStorage.getItem("textColor") || "#000000";
@@ -78,7 +78,7 @@ const HomeIconPage = () => {
 
 
        {/* Color pickers for admin */}
-      {/* <div style={{ marginBottom: "15px", textAlign: "center" }}>
+      <div style={{ marginBottom: "15px", textAlign: "center" }}>
         <label>
           <b>Text Color:</b>{" "}
           <input
@@ -107,7 +107,7 @@ const HomeIconPage = () => {
             onChange={(e) => setGradient({ ...gradient, end: e.target.value })}
           />
         </label>
-      </div> */}
+      </div>
 
       {/* Save Button */}
       {/* <div style={{ textAlign: "center", marginBottom: "20px" }}>
@@ -277,4 +277,4 @@ const HomeIconPage = () => {
   );
 };
 
-export default HomeIconPage;
+export default AdminHomeIconPage;
