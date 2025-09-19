@@ -36,7 +36,7 @@ const Login = () => {
       ); console.log("login response: ", res.data);
       localStorage.setItem("token", res.data.token);
       setMessage("✅ Login successful!");
-      navigate("/");
+      navigate("/admin/home");
     } catch (err) {
       setMessage("❌ " + (err.response?.data?.msg || err.message));
     }
@@ -121,6 +121,7 @@ const Login = () => {
         </Link> */}
         <br></br>
         <button type="submit" className="lgn_btn">Login</button>
+        {/* <Link type="submit" to="/admin/home" className="lgn_btn">Login</Link> */}
         <p>
           Don't have an account ? <Link to="/admin/signup" className="link_btn">Go to SignUp</Link>
         </p>
